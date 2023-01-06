@@ -1,0 +1,59 @@
+site_name: fangzu
+site_description: 房租
+copyright: 'Copyright &copy; 2023'
+use_directory_urls: True
+
+theme:
+  name: material
+  icon:
+      repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+nav:
+  - 2023: index.md
+
+plugins:
+  - search
+  - charts:
+      vega_theme: default
+      vega_renderer: "canvas"
+  # - git-revision-date-localized:
+  #     type: timeago
+  #     timezone: Europe/Amsterdam
+  #     locale: en
+  #     fallback_to_build_date: false
+  #     enable_creation_date: true
+
+use_directory_urls: true
+
+markdown_extensions:
+  - meta
+  - admonition
+  - pymdownx.keys
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: vegalite
+          class: vegalite
+          format: !!python/name:mkdocs_charts_plugin.fences.fence_vegalite
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/vega@5
+  - https://cdn.jsdelivr.net/npm/vega-lite@5
+  - https://cdn.jsdelivr.net/npm/vega-embed@6
