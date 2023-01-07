@@ -1,4 +1,6 @@
 site_url: https://javacs3.github.io/fangzu/
+repo_url: https://javacs3.github.io/fangzu/
+repo_name: 'javacs3/fangzu'
 site_name: fangzu
 site_description: 房租
 copyright: 'Copyright &copy; 2023'
@@ -27,7 +29,8 @@ plugins:
   - search
   - charts:
       vega_theme: default
-      vega_renderer: "canvas"
+      vega_renderer: canvas
+      use_data_path: False
   # - git-revision-date-localized:
   #     type: timeago
   #     timezone: Europe/Amsterdam
