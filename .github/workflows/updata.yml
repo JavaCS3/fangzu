@@ -1,0 +1,33 @@
+name: Update Assets Data
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      - name: Pip install
+        run: |
+          python3 -m pip install pandas
+
+      - name: Assume AWS role
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ap-northeast-3
+
+      - env:
+          BUCKET: ${{ secrets.BUCKET }}
+        run: |
+          PREFIX=${{ secrets.DATA_SOURCE }} scripts/download.sh 2022 /tmp/2022
+          scripts/stat.py /tmp/2022/*

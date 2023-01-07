@@ -17,4 +17,4 @@ df = df.drop_duplicates(subset=['url', 'month'])
 desc = df.groupby(['month', 'district'])['rental_by_month'] \
          .describe(percentiles=[0.5, 0.8, 0.9])
 
-desc.to_csv('o.csv')
+print(desc)
