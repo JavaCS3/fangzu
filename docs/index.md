@@ -8,7 +8,7 @@
   "height": 300,
   "mark": {"type": "line", "point": true, "tooltip": true},
   "encoding": {
-    "x": {"field": "month", "type": "quantitative"},
+    "x": {"field": "month", "type": "quantitative", "axis": {"tickMinStep": 1}},
     "y": {"field": "mean", "type": "quantitative"},
     "color": {"field": "district", "type": "nominal"}
   }
