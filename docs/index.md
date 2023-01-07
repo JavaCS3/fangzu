@@ -1,16 +1,3 @@
-每月租金
+# 房租统计
 
-```vegalite
-{
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Stock prices of 5 Tech Companies over Time.",
-  "data": {"url": "assets/data/2.csv"},
-  "height": 300,
-  "mark": {"type": "line", "point": true, "tooltip": true},
-  "encoding": {
-    "x": {"field": "month", "type": "quantitative", "axis": {"tickMinStep": 1}},
-    "y": {"field": "mean", "type": "quantitative"},
-    "color": {"field": "district", "type": "nominal"}
-  }
-}
-```
+- [上海](./sh/2022)
