@@ -1,0 +1,4 @@
+mkdocs==1.4.2
+mkdocs-charts-plugin==0.0.8
+mkdocs-material==9.0.2
+mkdocs-material-extensions==1.1.1
