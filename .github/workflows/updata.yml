@@ -29,7 +29,8 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: ap-northeast-3
 
-      - env:
+      - name: Update data
+        env:
           BUCKET: ${{ secrets.BUCKET }}
         run: |
           PREFIX=${{ secrets.DATA_SOURCE }} scripts/download.sh 2022 /tmp/2022
