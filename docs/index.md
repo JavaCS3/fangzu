@@ -3,17 +3,14 @@
 ```vegalite
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "A simple bar chart with embedded data.",
-  "data": {"url" : "assets/data/1.json"},
-  "mark": {"type": "bar", "tooltip": true},
+  "description": "Stock prices of 5 Tech Companies over Time.",
+  "data": {"url": "assets/data/2.csv"},
+  "height": "300",
+  "mark": {"type": "line", "point": true, "tooltip": true},
   "encoding": {
-    "y": {
-      "field": "district",
-      "type": "nominal",
-      "axis": {"labelAngle": 0},
-      "sort": {"field": "median_rental_by_month"}
-    },
-    "x": {"field": "median_rental_by_month", "type": "quantitative"}
+    "x": {"timeUnit": "month", "field": "month"},
+    "y": {"field": "mean", "type": "quantitative"},
+    "color": {"field": "district", "type": "nominal"}
   }
 }
 ```
