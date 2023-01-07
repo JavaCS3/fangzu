@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
+import os
 import sys
 import pandas as pd
+
+DEST = os.environ['DEST']
 
 
 def read_csv(filename: str):
@@ -10,11 +13,14 @@ def read_csv(filename: str):
     return df
 
 
-dfs = [read_csv(filename) for filename in sys.argv[1:]]
-df = pd.concat(dfs)
-df = df.drop_duplicates(subset=['url', 'month'])
+if __name__ == '__main__':
+    dfs = [read_csv(filename) for filename in sys.argv[1:]]
+    df = pd.concat(dfs)
+    df = df.drop_duplicates(subset=['url', 'month'])
 
-desc = df.groupby(['month', 'district'])['rental_by_month'] \
-         .describe(percentiles=[0.5, 0.8, 0.9])
+    desc = df.groupby(['month', 'district'])['rental_by_month'] \
+        .describe(percentiles=[0.5, 0.8, 0.9])
 
-print(desc)
+    print(desc)
+
+    desc.to_csv(DEST)
