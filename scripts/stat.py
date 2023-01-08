@@ -43,4 +43,8 @@ if __name__ == '__main__':
         .describe(percentiles=[0.5, 0.8, 0.9]) \
         .to_csv(os.path.join(DEST_DIR, 'rental-all-by-district.csv'))
 
+    uniq_url_df.groupby('district')['rental_per_area_by_month'] \
+        .describe(percentiles=[0.5, 0.8, 0.9]) \
+        .to_csv(os.path.join(DEST_DIR, 'rental-per-area-all-by-district.csv'))
+
     print('Done')
