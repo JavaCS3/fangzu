@@ -34,8 +34,9 @@ jobs:
           BUCKET: ${{ secrets.BUCKET }}
         run: |
           DB=${{ secrets.DATA_SOURCE }} scripts/s3cp.sh 2022 /tmp/2022
-          DEST_DIR=docs/assets/data/ scripts/stat.py /tmp/2022/*
+          DEST_DIR=docs/assets/data/sh/2022 scripts/stat.py /tmp/2022/*
 
       - uses: EndBug/add-and-commit@v9
         with:
+          default_author: github_actions
           add: "./docs/assets/data/*.csv --force"
