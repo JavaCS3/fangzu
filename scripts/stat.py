@@ -21,6 +21,4 @@ if __name__ == '__main__':
     desc = df.groupby(['month', 'district'])['rental_by_month'] \
         .describe(percentiles=[0.5, 0.8, 0.9])
 
-    print(desc)
-
-    desc.to_csv(os.path.join(DEST_DIR, '2.csv'))
+    desc.to_csv(os.path.join(DEST_DIR, 'rental-monthly-by-district.csv'))
