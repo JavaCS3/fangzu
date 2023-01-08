@@ -485,75 +485,91 @@
   }
 }</vegachart></p>
 <h2 id="_4">排行榜</h2>
-<p>整租租金</p>
 <p><vegachart style='width: 100%'  class="vegalite">{
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Stock prices of 5 Tech Companies over Time.",
-  "data": {
-    "url": "../../assets/data/sh/2022/rental-all-by-district.csv"
-  },
-  "height": {"step": 20},
-  "transform": [
-    {"joinaggregate": [{"op": "median", "field": "mean", "as": "median-line"}]}
-  ],
-  "layer": [
+  "hconcat": [
     {
-      "mark": {"type": "bar", "tooltip": true},
-      "encoding": {
-        "y": {"field": "district", "type": "ordinal", "sort": "-x"},
-        "x": {"field": "mean", "type": "quantitative"},
-        "color": {
-          "field": "district",
-          "type": "nominal",
-          "scale": {"scheme": "tableau20"}
+      "data": {
+        "url": "../../assets/data/sh/2022/rental-all-by-district.csv"
+      },
+      "transform": [
+        {
+          "joinaggregate": [
+            {"op": "median", "field": "mean", "as": "median-line"}
+          ]
         }
-      }
+      ],
+      "layer": [
+        {
+          "mark": {"type": "bar", "tooltip": true},
+          "encoding": {
+            "y": {
+              "field": "district",
+              "type": "ordinal",
+              "sort": "-x",
+              "title": "区域"
+            },
+            "x": {"field": "mean", "type": "quantitative", "title": "整租租金"},
+            "color": {
+              "field": "district",
+              "type": "nominal",
+              "scale": {"scheme": "tableau20"}
+            }
+          }
+        },
+        {
+          "mark": {"type": "rule", "color": "red", "tooltip": true},
+          "encoding": {
+            "x": {
+              "aggregate": "median",
+              "field": "median-line",
+              "type": "quantitative"
+            }
+          }
+        }
+      ]
     },
     {
-      "mark": {"type": "rule", "color": "red", "tooltip": true},
-      "encoding": {
-        "x": {
-          "aggregate": "median",
-          "field": "median-line",
-          "type": "quantitative"
+      "data": {
+        "url": "../../assets/data/sh/2022/rental-per-area-all-by-district.csv"
+      },
+      "transform": [
+        {
+          "joinaggregate": [
+            {"op": "median", "field": "mean", "as": "median-line"}
+          ]
         }
-      }
-    }
-  ]
-}</vegachart></p>
-<p>每平米租金</p>
-<p><vegachart style='width: 100%'  class="vegalite">{
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Stock prices of 5 Tech Companies over Time.",
-  "data": {
-    "url": "../../assets/data/sh/2022/rental-per-area-all-by-district.csv"
-  },
-  "height": {"step": 20},
-  "transform": [
-    {"joinaggregate": [{"op": "median", "field": "mean", "as": "median-line"}]}
-  ],
-  "layer": [
-    {
-      "mark": {"type": "bar", "tooltip": true},
-      "encoding": {
-        "y": {"field": "district", "type": "ordinal", "sort": "-x"},
-        "x": {"field": "mean", "type": "quantitative"},
-        "color": {
-          "field": "district",
-          "type": "nominal",
-          "scale": {"scheme": "tableau20"}
+      ],
+      "layer": [
+        {
+          "mark": {"type": "bar", "tooltip": true},
+          "encoding": {
+            "y": {
+              "field": "district",
+              "type": "ordinal",
+              "sort": "-x",
+              "title": null
+            },
+            "x": {"field": "mean", "type": "quantitative", "title": "每平米租金"},
+            "color": {
+              "field": "district",
+              "type": "nominal",
+              "scale": {"scheme": "tableau20"}
+            }
+          }
+        },
+        {
+          "mark": {"type": "rule", "color": "red", "tooltip": true},
+          "encoding": {
+            "x": {
+              "aggregate": "median",
+              "field": "median-line",
+              "type": "quantitative"
+            }
+          }
         }
-      }
-    },
-    {
-      "mark": {"type": "rule", "color": "red", "tooltip": true},
-      "encoding": {
-        "x": {
-          "aggregate": "median",
-          "field": "median-line",
-          "type": "quantitative"
-        }
-      }
+      ]
     }
   ]
 }</vegachart></p>
