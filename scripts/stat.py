@@ -18,7 +18,16 @@ if __name__ == '__main__':
     df = pd.concat(dfs)
     df = df.drop_duplicates(subset=['url', 'month'])
 
-    desc = df.groupby(['month', 'district'])['rental_by_month'] \
-        .describe(percentiles=[0.5, 0.8, 0.9])
+    df['rental_per_area_by_month'] = df['rental_by_month'] / df['area']
 
-    desc.to_csv(os.path.join(DEST_DIR, 'rental-monthly-by-district.csv'))
+    print('# Rental monthly by district')
+
+    df.groupby(['month', 'district'])['rental_by_month'] \
+        .describe(percentiles=[0.5, 0.8, 0.9]) \
+        .to_csv(os.path.join(DEST_DIR, 'rental-monthly-by-district.csv'))
+
+    print('# Rental per area monthly by district')
+
+    df.groupby(['month', 'district'])['rental_per_area_by_month'] \
+        .describe(percentiles=[0.5, 0.8, 0.9]) \
+        .to_csv(os.path.join(DEST_DIR, 'rental-per-area-monthly-by-district.csv'))
