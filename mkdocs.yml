@@ -29,6 +29,7 @@ nav:
 
 plugins:
   - search
+  - table-reader
   - charts:
       vega_theme: default
       vega_renderer: canvas
