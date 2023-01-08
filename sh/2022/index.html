@@ -313,15 +313,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#-" class="md-nav__link">
-    每月租金 - 整租
+  <a href="#_2" class="md-nav__link">
+    区域分布
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#-_1" class="md-nav__link">
-    每月租金 - 每平米
+  <a href="#_3" class="md-nav__link">
+    租金趋势
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    排行榜
   </a>
   
 </li>
@@ -368,15 +375,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#-" class="md-nav__link">
-    每月租金 - 整租
+  <a href="#_2" class="md-nav__link">
+    区域分布
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#-_1" class="md-nav__link">
-    每月租金 - 每平米
+  <a href="#_3" class="md-nav__link">
+    租金趋势
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    排行榜
   </a>
   
 </li>
@@ -398,9 +412,10 @@
 
 
 <h1 id="_1">上海</h1>
+<h2 id="_2">区域分布</h2>
 <p><vegachart style='width: 100%'  class="vegalite">{
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Stock prices of 5 Tech Companies over Time.",
+  "description": "房屋数量按区域分布",
   "data": {
     "url": "../../assets/data/sh/2022/rental-all-by-district.csv"
   },
@@ -418,7 +433,8 @@
     "order": {"field": "count", "type": "quantitative", "sort": "descending"}
   }
 }</vegachart></p>
-<h2 id="-">每月租金 - 整租</h2>
+<h2 id="_3">租金趋势</h2>
+<p>整租租金</p>
 <p><vegachart style='width: 100%'  class="vegalite">{
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Stock prices of 5 Tech Companies over Time.",
@@ -443,7 +459,33 @@
     "opacity": {"condition": {"param": "district", "value": 1}, "value": 0.05}
   }
 }</vegachart></p>
-<p>排行榜</p>
+<p>每平米租金</p>
+<p><vegachart style='width: 100%'  class="vegalite">{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stock prices of 5 Tech Companies over Time.",
+  "data": {"url": "../../assets/data/sh/2022/rental-per-area-monthly-by-district.csv"},
+  "height": 300,
+  "mark": {"type": "line", "point": true, "tooltip": true},
+  "params": [
+    {
+      "name": "district",
+      "select": {"type": "point", "fields": ["district"]},
+      "bind": "legend"
+    }
+  ],
+  "encoding": {
+    "x": {"field": "month", "type": "quantitative", "axis": {"tickMinStep": 1}},
+    "y": {"field": "mean", "type": "quantitative"},
+    "color": {
+      "field": "district",
+      "type": "nominal",
+      "scale": {"scheme": "tableau20"}
+    },
+    "opacity": {"condition": {"param": "district", "value": 1}, "value": 0.05}
+  }
+}</vegachart></p>
+<h2 id="_4">排行榜</h2>
+<p>整租租金</p>
 <p><vegachart style='width: 100%'  class="vegalite">{
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Stock prices of 5 Tech Companies over Time.",
@@ -479,32 +521,7 @@
     }
   ]
 }</vegachart></p>
-<h2 id="-_1">每月租金 - 每平米</h2>
-<p><vegachart style='width: 100%'  class="vegalite">{
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Stock prices of 5 Tech Companies over Time.",
-  "data": {"url": "../../assets/data/sh/2022/rental-per-area-monthly-by-district.csv"},
-  "height": 300,
-  "mark": {"type": "line", "point": true, "tooltip": true},
-  "params": [
-    {
-      "name": "district",
-      "select": {"type": "point", "fields": ["district"]},
-      "bind": "legend"
-    }
-  ],
-  "encoding": {
-    "x": {"field": "month", "type": "quantitative", "axis": {"tickMinStep": 1}},
-    "y": {"field": "mean", "type": "quantitative"},
-    "color": {
-      "field": "district",
-      "type": "nominal",
-      "scale": {"scheme": "tableau20"}
-    },
-    "opacity": {"condition": {"param": "district", "value": 1}, "value": 0.05}
-  }
-}</vegachart></p>
-<p>排行榜</p>
+<p>每平米租金</p>
 <p><vegachart style='width: 100%'  class="vegalite">{
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Stock prices of 5 Tech Companies over Time.",
