@@ -423,6 +423,19 @@
     "opacity": {"condition": {"param": "district", "value": 1}, "value": 0.05}
   }
 }</vegachart></p>
+<p><vegachart style='width: 100%'  class="vegalite">{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stock prices of 5 Tech Companies over Time.",
+  "data": {
+    "url": "../../assets/data/sh/2022/rental-all-by-district.csv"
+  },
+  "height": {"step": 20},
+  "mark": {"type": "bar", "tooltip": true},
+  "encoding": {
+    "y": {"field": "district", "type": "ordinal", "sort": "-x"},
+    "x": {"field": "mean", "type": "quantitative"}
+  }
+}</vegachart></p>
 <h2 id="-_1">每月租金 - 每平米</h2>
 <p><vegachart style='width: 100%'  class="vegalite">{
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
