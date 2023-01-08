@@ -33,8 +33,8 @@ jobs:
         env:
           BUCKET: ${{ secrets.BUCKET }}
         run: |
-          PREFIX=${{ secrets.DATA_SOURCE }} scripts/download.sh 2022 /tmp/2022
-          DEST=docs/assets/data/2.csv scripts/stat.py /tmp/2022/*
+          DB=${{ secrets.DATA_SOURCE }} scripts/s3cp.sh 2022 /tmp/2022
+          DEST_DIR=docs/assets/data/ scripts/stat.py /tmp/2022/*
 
       - uses: EndBug/add-and-commit@v9
         with:

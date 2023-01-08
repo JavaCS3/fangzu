@@ -3,7 +3,7 @@ import os
 import sys
 import pandas as pd
 
-DEST = os.environ['DEST']
+DEST_DIR = os.environ['DEST_DIR']
 
 
 def read_csv(filename: str):
@@ -23,4 +23,4 @@ if __name__ == '__main__':
 
     print(desc)
 
-    desc.to_csv(DEST)
+    desc.to_csv(os.path.join(DEST_DIR, '2.csv'))
