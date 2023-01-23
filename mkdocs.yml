@@ -26,6 +26,7 @@ nav:
   - 主页: index.md
   - 上海:
     - 2022: sh/2022.md
+    - 2023: sh/2023.md
 
 plugins:
   - search
