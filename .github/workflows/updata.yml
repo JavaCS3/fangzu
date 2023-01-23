@@ -28,13 +28,15 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws-region: ap-northeast-3
+      
 
       - name: Update data
         env:
           BUCKET: ${{ secrets.BUCKET }}
         run: |
-          DB=${{ secrets.DATA_SOURCE }} scripts/s3cp.sh 2022 /tmp/2022
-          DEST_DIR=docs/assets/data/sh/2022 scripts/stat.py /tmp/2022/*
+          YEAR=$(date '+%Y')
+          DB=${{ secrets.DATA_SOURCE }} scripts/s3cp.sh ${YEAR} /tmp/${YEAR}
+          DEST_DIR=docs/assets/data/sh/${YEAR} scripts/stat.py /tmp/${YEAR}/*
 
       - uses: EndBug/add-and-commit@v9
         with:
