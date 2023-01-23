@@ -35,8 +35,12 @@ jobs:
           BUCKET: ${{ secrets.BUCKET }}
         run: |
           YEAR=$(date '+%Y')
+          DEST_DIR=docs/assets/data/sh/${YEAR}
+          
+          mkdir -p ${DEST_DIR}
+          
           DB=${{ secrets.DATA_SOURCE }} scripts/s3cp.sh ${YEAR} /tmp/${YEAR}
-          DEST_DIR=docs/assets/data/sh/${YEAR} scripts/stat.py /tmp/${YEAR}/*
+          DEST_DIR=${DEST_DIR} scripts/stat.py /tmp/${YEAR}/*
 
       - uses: EndBug/add-and-commit@v9
         with:
