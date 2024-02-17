@@ -3,7 +3,7 @@ repo_url: https://javacs3.github.io/fangzu/
 repo_name: 'javacs3/fangzu'
 site_name: fangzu
 site_description: 房租
-copyright: 'Copyright &copy; 2023'
+copyright: 'Copyright &copy; 2024'
 use_directory_urls: True
 
 theme:
@@ -27,6 +27,7 @@ nav:
   - 上海:
     - 2022: sh/2022.md
     - 2023: sh/2023.md
+    - 2024: sh/2024.md
 
 plugins:
   - search
