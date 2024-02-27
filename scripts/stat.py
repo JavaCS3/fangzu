@@ -19,6 +19,7 @@ if __name__ == '__main__':
     df = df.drop_duplicates(subset=['url', 'month'])
 
     df['rental_per_area_by_month'] = df['rental_by_month'] / df['area']
+    df['subdistrict'] = df['subdistrict'].str.strip('[]')
 
     print('# Rental monthly by district')
 
