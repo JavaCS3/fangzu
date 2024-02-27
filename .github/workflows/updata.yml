@@ -37,7 +37,6 @@ jobs:
           BUCKET: ${{ secrets.BUCKET }}
         run: |
           YEAR=$(date '+%Y')
-          YEAR=2023
           DEST_DIR=docs/assets/data/sh/${YEAR}
           
           mkdir -p ${DEST_DIR}
